@@ -1,0 +1,11 @@
+# Snyk (https://snyk.io) policy file
+version: v1.25.0
+ignore: {}
+patch: {}
+exclude:
+  global:
+    - "**/vendor/**"
+    - "**/third_party/**"
+    - "**/test/**"
+    - "**/tests/**"
+    - "**/fixtures/**"
