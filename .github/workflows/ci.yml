@@ -17,7 +17,7 @@ jobs:
   ci:
     uses: brightsheets/reusable-workflows/.github/workflows/go-ci.yaml@v1
     with:
-      snyk-org: brightsheets
+      snyk-org: test-snyk-demo
       go-private-owners: brightsheets
     secrets:
       snyk-token: ${{ secrets.SNYK_TOKEN }}
