@@ -1,0 +1,24 @@
+# Runs brightsheets/reusable-workflows/.github/workflows/go-ci.yaml@v1: lint, tests, Snyk Open Source + Code.
+# Needs secret SNYK_TOKEN (without it the Snyk scan is skipped with a warning),
+# and GO_MODULES_TOKEN: a token that can read the private brightsheets repos this module imports.
+name: CI
+on:
+  push:
+    branches: [main, "hotfix/**"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+  pull-requests: write
+  packages: write
+jobs:
+  ci:
+    uses: brightsheets/reusable-workflows/.github/workflows/go-ci.yaml@v1
+    with:
+      snyk-org: brightsheets
+      go-private-owners: brightsheets
+    secrets:
+      snyk-token: ${{ secrets.SNYK_TOKEN }}
+      go-modules-token: ${{ secrets.GO_MODULES_TOKEN }}
